@@ -1,7 +1,10 @@
 package com.company.models;
 
+import com.company.enums.BoardPrivacy;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Board {
 
@@ -15,12 +18,28 @@ public class Board {
 
     private List<com.company.models.List> lists;
 
-    public Board(String boardId, String boardName, String url) {
-        this.boardId = boardId;
+    public BoardPrivacy getBoardPrivacy() {
+        return boardPrivacy;
+    }
+
+    private BoardPrivacy boardPrivacy;
+
+    public Board(String boardName) {
+        this.boardId = UUID.randomUUID().toString();
         this.boardName = boardName;
-        this.url = url;
+        this.url = UUID.randomUUID().toString() + boardId ;
         this.users = new ArrayList<>();
         this.lists = new ArrayList<>();
+        this.boardPrivacy = BoardPrivacy.PUBLIC;
+    }
+
+    public Board(String boardName, BoardPrivacy boardPrivacy) {
+        this.boardId = UUID.randomUUID().toString();
+        this.boardName = boardName;
+        this.url = UUID.randomUUID().toString() + boardId;
+        this.users = new ArrayList<>();
+        this.lists = new ArrayList<>();
+        this.boardPrivacy = boardPrivacy;
     }
 
     public String getBoardId() {

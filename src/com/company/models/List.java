@@ -1,6 +1,7 @@
 package com.company.models;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class List {
 
@@ -10,9 +11,12 @@ public class List {
 
     private java.util.List<Card> cards;
 
-    public List(String listId, String listName) {
-        this.listId = listId;
+    private String boardId;
+
+    public List(String listName, String boardId) {
+        this.listId = UUID.randomUUID().toString();
         this.listName = listName;
+        this.boardId = boardId;
         this.cards = new ArrayList<>();
     }
 
@@ -30,5 +34,9 @@ public class List {
 
     public java.util.List<Card> getCards() {
         return cards;
+    }
+
+    public String getBoardId() {
+        return boardId;
     }
 }

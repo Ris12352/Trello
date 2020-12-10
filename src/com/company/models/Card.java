@@ -1,5 +1,7 @@
 package com.company.models;
 
+import java.util.UUID;
+
 public class Card {
 
     private String cardId;
@@ -10,11 +12,21 @@ public class Card {
 
     private User assignerUser;
 
-    public Card(String cardId, String name, String description, User assignerUser) {
-        this.cardId = cardId;
+    private String listId;
+
+    private String boardId;
+
+    public void setAssignerUser(User assignerUser) {
+        this.assignerUser = assignerUser;
+    }
+
+    public Card(String boardId, String listId, String name, String description) {
+        this.boardId = boardId;
+        this.listId = listId;
+        this.cardId = UUID.randomUUID().toString();
         this.name = name;
         this.description = description;
-        this.assignerUser = assignerUser;
+        this.assignerUser = null;
     }
 
     public String getCardId() {
